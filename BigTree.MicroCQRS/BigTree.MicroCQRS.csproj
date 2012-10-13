@@ -35,11 +35,15 @@
       <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.10\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>..\packages\protobuf-net r580\protobuf-net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -53,6 +57,19 @@
     <Compile Include="Buses\SimpleBus.cs" />
     <Compile Include="Buses\WireUpBus.cs" />
     <Compile Include="CommandHandlers\BaseHandler.cs" />
+    <Compile Include="DocumentStore\AddOrUpdateHint.cs" />
+    <Compile Include="DocumentStore\ExtendDocumentReader.cs" />
+    <Compile Include="DocumentStore\ExtendDocumentWriter.cs" />
+    <Compile Include="DocumentStore\FileDocumentReaderWriter.cs" />
+    <Compile Include="DocumentStore\FileDocumentStore.cs" />
+    <Compile Include="DocumentStore\IDocumentReader.cs" />
+    <Compile Include="DocumentStore\IDocumentStore.cs" />
+    <Compile Include="DocumentStore\IDocumentStrategy.cs" />
+    <Compile Include="DocumentStore\IDocumentWriter.cs" />
+    <Compile Include="DocumentStore\MemoryDocumentReaderWriter.cs" />
+    <Compile Include="DocumentStore\MemoryDocumentStore.cs" />
+    <Compile Include="DocumentStore\MemoryStorageConfig.cs" />
+    <Compile Include="Infrastructure\unit.cs" />
     <Compile Include="Email\BasicEmailSender.cs" />
     <Compile Include="Email\EmailProvider.cs" />
     <Compile Include="EventStores\InMemoryEventStore.cs" />
@@ -75,6 +92,8 @@
     <Compile Include="Sagas\ISaga.cs" />
     <Compile Include="Sagas\ISagaEntity.cs" />
     <Compile Include="Sagas\ISagaPersister.cs" />
+    <Compile Include="Serialization\Conventions.cs" />
+    <Compile Include="Serialization\DocumentStrategy.cs" />
     <Compile Include="Serialization\JsonSerializationStrategy.cs" />
     <Compile Include="Utilities\CollectionExtensions.cs" />
     <Compile Include="Utilities\CustomExceptions.cs" />
@@ -89,6 +108,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
