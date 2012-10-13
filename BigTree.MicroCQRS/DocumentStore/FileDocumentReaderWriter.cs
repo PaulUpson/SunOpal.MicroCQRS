@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Threading;
 
 namespace BigTree.MicroCQRS.DocumentStore
 {
@@ -44,6 +45,12 @@ namespace BigTree.MicroCQRS.DocumentStore
       }
       catch(DirectoryNotFoundException)
       {
+        return false;
+      }
+      catch(IOException) // fix for fast read / slow write concurency
+      {
+        Thread.Sleep(2);
+        TryGet(key, out view);
         return false;
       }
     }
