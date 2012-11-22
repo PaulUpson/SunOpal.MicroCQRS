@@ -1,3 +1,4 @@
+using System.Data.SqlClient;
 using System.Net.Mail;
 
 namespace BigTree.MicroCQRS.Email {
@@ -18,7 +19,12 @@ namespace BigTree.MicroCQRS.Email {
     public void Send(dynamic email) {
       _email = email;
       _message = _emailConverter.Convert(email);
-      _emailSender.Send(_message);
+      try {
+        _emailSender.Send(_message);
+      }
+      catch (SqlException exception) {
+        Logger.Error("failed to send email : " + exception.Message);
+      }
     }
 
     public dynamic GetEmail() {
