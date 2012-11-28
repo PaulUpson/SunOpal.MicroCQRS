@@ -92,7 +92,7 @@
     <Compile Include="Sagas\ISaga.cs" />
     <Compile Include="Sagas\ISagaEntity.cs" />
     <Compile Include="Sagas\ISagaPersister.cs" />
-    <Compile Include="Serialization\Conventions.cs" />
+    <Compile Include="Serialization\GlobalConfig.cs" />
     <Compile Include="Serialization\DocumentStrategy.cs" />
     <Compile Include="Serialization\JsonSerializationStrategy.cs" />
     <Compile Include="Utilities\CollectionExtensions.cs" />

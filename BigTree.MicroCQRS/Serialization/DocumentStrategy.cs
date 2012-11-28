@@ -15,7 +15,7 @@ namespace BigTree.MicroCQRS
   {
     public string GetEntityBucket<TEntity>()
     {
-      return Conventions.ViewsFolder + "/" + NameCache<TEntity>.Name;
+      return GlobalConfig.Conventions.ViewsFolder + "/" + NameCache<TEntity>.Name;
     }
 
     public string GetEntityLocation<TEntity>(object key)
@@ -69,7 +69,7 @@ namespace BigTree.MicroCQRS
   {
     public string GetEntityBucket<TEntity>()
     {
-      return Conventions.DocsFolder + "/" + NameCache<TEntity>.Name;
+      return GlobalConfig.Conventions.DocsFolder + "/" + NameCache<TEntity>.Name;
     }
 
     public string GetEntityLocation<TEntity>(object key)
@@ -100,7 +100,7 @@ namespace BigTree.MicroCQRS
   {
     public string GetEntityBucket<TEntity>()
     {
-      return Conventions.DocsFolder + "/" + NameCache<TEntity>.Name;
+      return GlobalConfig.Conventions.DocsFolder + "/" + NameCache<TEntity>.Name;
     }
 
     public string GetEntityLocation<TEntity>(object key)

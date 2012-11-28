@@ -24,10 +24,10 @@ namespace BigTree.MicroCQRS.DocumentStore
     public bool TryGet(TKey key, out TEntity view)
     {
       view = default(TEntity);
+      var name = GetName(key);
+
       try
       {
-        var name = GetName(key);
-
         if(!File.Exists(name))
           return false;
 
@@ -49,6 +49,7 @@ namespace BigTree.MicroCQRS.DocumentStore
       }
       catch(IOException) // fix for fast read / slow write concurency
       {
+        Logger.Warning("File read failed for {0} - {1} with key {2}. Will retry.", _folder, name, key);
         Thread.Sleep(2);
         TryGet(key, out view);
         return false;
@@ -110,10 +111,21 @@ namespace BigTree.MicroCQRS.DocumentStore
             return result;
           }
       }
+      catch (FileNotFoundException)
+      {
+        var s = string.Format("File '{0}' does not exist.", name);
+        throw new InvalidOperationException(s);
+      }
       catch (DirectoryNotFoundException)
       {
         var s = string.Format("Container '{0}' does not exist.", _folder);
         throw new InvalidOperationException(s);
+      }
+      catch (IOException) // fix for fast read / slow write concurency
+      {
+        Logger.Warning("File write failed for {0} - {1} with key {2}. Will retry.", _folder, name, key);
+        Thread.Sleep(120);
+        return AddOrUpdate(key, addFactory, update, hint);
       }
     }
 

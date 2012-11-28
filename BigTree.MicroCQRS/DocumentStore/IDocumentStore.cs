@@ -11,6 +11,7 @@ namespace BigTree.MicroCQRS.DocumentStore
     IEnumerable<DocumentRecord> EnumerateContents(string bucket);
     void WriteContents(string bucket, IEnumerable<DocumentRecord> records);
     void Reset(string bucket);
+    void ResetAll();
   }
 
   public sealed class DocumentRecord

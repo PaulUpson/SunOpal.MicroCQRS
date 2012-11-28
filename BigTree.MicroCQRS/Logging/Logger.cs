@@ -12,14 +12,21 @@ namespace BigTree.MicroCQRS
     public static void Exception(Exception exe) {
       Error(exe.ToString());
     }
+    public static void Error(string message, params object[] args) {
+      Error(string.Format(message, args));
+    }
     public static void Error(string message) {
       Log(message, LogSeverity.Error);
     }
-
+    public static void Warning(string message, params object[] args) {
+      Warning(string.Format(message, args));
+    }
     public static void Warning(string message) {
       Log(message, LogSeverity.Warning);
     }
-
+    public static void Info(string message, params object[] args) {
+      Info(string.Format(message, args));
+    }
     public static void Info(string message) {
       Log(message, LogSeverity.Information);
     }
