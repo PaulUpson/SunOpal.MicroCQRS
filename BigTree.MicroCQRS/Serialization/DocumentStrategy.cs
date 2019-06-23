@@ -106,9 +106,9 @@ namespace BigTree.MicroCQRS
     public string GetEntityLocation<TEntity>(object key)
     {
       if(key is unit)
-        return NameCache<TEntity>.Name + ".js";
+        return NameCache<TEntity>.Name + ".json";
 
-      return key.ToString().ToLowerInvariant() + ".js";
+      return key.ToString().ToLowerInvariant() + ".json";
     }
 
     public void Serialize<TEntity>(TEntity entity, Stream stream)
