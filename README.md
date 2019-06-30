@@ -1,4 +1,4 @@
-# BigTree.MicroCQRS
+# SunOpal.MicroCQRS
 
 _A lightweight CQRS framework_
 
