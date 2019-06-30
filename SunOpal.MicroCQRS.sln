@@ -10,10 +10,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunOpal.Email", "SunOpal.Email\SunOpal.Email.csproj", "{ABB98DDD-5573-477B-85A6-423CDAEE8372}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunOpal.MicroCQRS.Command", "SunOpal.MicroCQRS.Command\SunOpal.MicroCQRS.Command.csproj", "{87BF9DEF-E286-40A1-8772-E0DB86C68892}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunOpal.MicroCQRS", "SunOpal.MicroCQRS\SunOpal.MicroCQRS.csproj", "{0B94038C-A7AA-42A6-89CF-7B0D4E8DC93D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunOpal.DocumentStore", "SunOpal.DocumentStore\SunOpal.DocumentStore.csproj", "{A33CF3A4-4644-4069-B8F2-FA06957ACAF4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunOpal.DocumentStore.Tests", "SunOpal.DocumentStore.Tests\SunOpal.DocumentStore.Tests.csproj", "{0AE802AF-328B-4D94-A848-A3202831D83A}"
@@ -21,6 +17,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunOpal.MicroCQRS.Sagas", "SunOpal.MicroCQRS.Sagas\SunOpal.MicroCQRS.Sagas.csproj", "{50E66814-4E5C-425B-A560-D3B3AEDEFEF8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunOpal.Email.Tests", "SunOpal.Email.Tests\SunOpal.Email.Tests.csproj", "{EFBD15B9-B663-4AD2-AFA4-67FA28AFDBA4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunOpal.MicroCQRS", "SunOpal.MicroCQRS\SunOpal.MicroCQRS.csproj", "{6A037183-EB61-46A1-90EB-E9F69E9914C9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunOpal.MicroCQRS.Command", "SunOpal.MicroCQRS.Command\SunOpal.MicroCQRS.Command.csproj", "{B07D6FC6-B63D-46F8-AB60-0636F85F1DA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,14 +32,6 @@ Global
 		{ABB98DDD-5573-477B-85A6-423CDAEE8372}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABB98DDD-5573-477B-85A6-423CDAEE8372}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABB98DDD-5573-477B-85A6-423CDAEE8372}.Release|Any CPU.Build.0 = Release|Any CPU
-		{87BF9DEF-E286-40A1-8772-E0DB86C68892}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{87BF9DEF-E286-40A1-8772-E0DB86C68892}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{87BF9DEF-E286-40A1-8772-E0DB86C68892}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{87BF9DEF-E286-40A1-8772-E0DB86C68892}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B94038C-A7AA-42A6-89CF-7B0D4E8DC93D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B94038C-A7AA-42A6-89CF-7B0D4E8DC93D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B94038C-A7AA-42A6-89CF-7B0D4E8DC93D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B94038C-A7AA-42A6-89CF-7B0D4E8DC93D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A33CF3A4-4644-4069-B8F2-FA06957ACAF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A33CF3A4-4644-4069-B8F2-FA06957ACAF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A33CF3A4-4644-4069-B8F2-FA06957ACAF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -56,6 +48,14 @@ Global
 		{EFBD15B9-B663-4AD2-AFA4-67FA28AFDBA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFBD15B9-B663-4AD2-AFA4-67FA28AFDBA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFBD15B9-B663-4AD2-AFA4-67FA28AFDBA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A037183-EB61-46A1-90EB-E9F69E9914C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A037183-EB61-46A1-90EB-E9F69E9914C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A037183-EB61-46A1-90EB-E9F69E9914C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A037183-EB61-46A1-90EB-E9F69E9914C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B07D6FC6-B63D-46F8-AB60-0636F85F1DA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B07D6FC6-B63D-46F8-AB60-0636F85F1DA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B07D6FC6-B63D-46F8-AB60-0636F85F1DA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B07D6FC6-B63D-46F8-AB60-0636F85F1DA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
