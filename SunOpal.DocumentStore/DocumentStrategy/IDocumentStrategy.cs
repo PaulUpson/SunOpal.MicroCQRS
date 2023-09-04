@@ -1,13 +1,15 @@
 using System.IO;
 
-namespace SunOpal.DocumentStore
-{
-  public interface IDocumentStrategy
-  {
-    string GetEntityBucket<TEntity>();
-    string GetEntityLocation<TEntity>(object key);
+namespace SunOpal.DocumentStore;
 
-    void Serialize<TEntity>(TEntity entity, Stream stream);
-    TEntity Deserialize<TEntity>(Stream stream);
-  }
+/// <summary>
+/// Document storage and retrieval strategy
+/// </summary>
+public interface IDocumentStrategy
+{
+  string GetEntityBucket<TEntity>();
+  string GetEntityLocation<TEntity>(object key);
+
+  void Serialize<TEntity>(TEntity entity, Stream stream);
+  TEntity Deserialize<TEntity>(Stream stream);
 }

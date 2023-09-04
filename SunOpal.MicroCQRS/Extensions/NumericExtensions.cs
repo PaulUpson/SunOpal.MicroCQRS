@@ -22,8 +22,6 @@ namespace SunOpal.MicroCQRS
 
     // Filepath extensions
 
-    public static string GetCurrentExecutingDirectory() {
-      return Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath);
-    }
+    public static string GetCurrentExecutingDirectory() => Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().Location).LocalPath);
   }
 }

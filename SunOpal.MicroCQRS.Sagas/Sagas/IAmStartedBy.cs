@@ -2,7 +2,7 @@ namespace SunOpal.MicroCQRS.Sagas {
 
   /// <summary>
   /// use this interface to signify that when a message if the given type
-  /// is received, if a saga connot be found by an <see cref="IFindSagas{T}"/>
+  /// is received, if a saga cannot be found by an <see cref="IFindSagas{T}"/>
   /// the saga will be created.
   /// </summary>
   /// <typeparam name="T"></typeparam>

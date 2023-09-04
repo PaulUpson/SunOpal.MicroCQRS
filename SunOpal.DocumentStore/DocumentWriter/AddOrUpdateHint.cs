@@ -1,8 +1,7 @@
-namespace SunOpal.DocumentStore
+namespace SunOpal.DocumentStore;
+
+public enum AddOrUpdateHint
 {
-  public enum AddOrUpdateHint
-  {
-    ProbablyExists,
-    ProbablyDoesNotExist
-  }
+  ProbablyExists,
+  ProbablyDoesNotExist
 }

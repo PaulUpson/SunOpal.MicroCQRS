@@ -3,59 +3,55 @@ using System.IO;
 using System.Linq;
 using ProtoBuf;
 
-namespace SunOpal.DocumentStore
+namespace SunOpal.DocumentStore;
+
+public class ViewStrategy : IDocumentStrategy
 {
-  public class ViewStrategy : IDocumentStrategy
+  public string GetEntityBucket<TEntity>() => GlobalConfig.Conventions.ViewsFolder + "/" + NameCache<TEntity>.Name;
+
+  public string GetEntityLocation<TEntity>(object key)
   {
-    public string GetEntityBucket<TEntity>()
+    if(key is unit)
+      return NameCache<TEntity>.Name + ".pb";
+
+    if(key is Guid guid)
     {
-      return GlobalConfig.Conventions.ViewsFolder + "/" + NameCache<TEntity>.Name;
+      var b = (byte) ((uint) guid.GetHashCode() % 251);
+      return b + "/" + key.ToString().ToLowerInvariant() + ".pb";
     }
 
-    public string GetEntityLocation<TEntity>(object key)
+    if(key is string v)
     {
-      if(key is unit)
-        return NameCache<TEntity>.Name + ".pb";
-
-      if(key is Guid)
-      {
-        var b = (byte) ((uint) ((Guid) key).GetHashCode() % 251);
-        return b + "/" + key.ToString().ToLowerInvariant() + ".pb";
-      }
-
-      if(key is string)
-      {
-        var corrected = ((string) key).ToLowerInvariant().Trim();
-        var b = (byte) ((uint) CalculatedStringHash(corrected)%251);
-        return b + "/" + corrected + ".pb";
-      }
-
-      return null;
+      var corrected = v.ToLowerInvariant().Trim();
+      var b = (byte) ((uint) CalculatedStringHash(corrected)%251);
+      return b + "/" + corrected + ".pb";
     }
 
-    static int CalculatedStringHash(string value)
-    {
-      if(value == null) return 0;
-      unchecked
-      {
-        return value.Aggregate(2, (current, c) => current*31 + c);
-      }
-    }
+    return null;
+  }
 
-    public void Serialize<TEntity>(TEntity entity, Stream stream)
+  static int CalculatedStringHash(string value)
+  {
+    if(value == null) return 0;
+    unchecked
     {
-      // ProtoBuf must have non-zero files
-      stream.WriteByte(42);
-      Serializer.Serialize(stream, entity);
+      return value.Aggregate(2, (current, c) => current*31 + c);
     }
+  }
 
-    public TEntity Deserialize<TEntity>(Stream stream)
-    {
-      var signature = stream.ReadByte();
-      if(signature != 42)
-        throw new InvalidOperationException("Unknown view format");
+  public void Serialize<TEntity>(TEntity entity, Stream stream)
+  {
+    // ProtoBuf must have non-zero files
+    stream.WriteByte(42);
+    Serializer.Serialize(stream, entity);
+  }
 
-      return Serializer.Deserialize<TEntity>(stream);
-    }
+  public TEntity Deserialize<TEntity>(Stream stream)
+  {
+    var signature = stream.ReadByte();
+    if(signature != 42)
+      throw new InvalidOperationException("Unknown view format");
+
+    return Serializer.Deserialize<TEntity>(stream);
   }
 }

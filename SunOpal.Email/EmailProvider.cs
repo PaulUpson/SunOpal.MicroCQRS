@@ -3,7 +3,7 @@ using System.Net.Mail;
 
 namespace SunOpal.Email {
   /// <summary>
-  /// The Email Provider seperates out the preparation of the email from the sending mechanism
+  /// The Email Provider separates out the preparation of the email from the sending mechanism
   /// </summary>
   public class EmailProvider : IEmailProvider {
     private readonly IEmailConverter _emailConverter;
